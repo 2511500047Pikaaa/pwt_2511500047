@@ -51,11 +51,9 @@
            <td><?=$result['nm_mapel']; ?></td>
            <td><?=$result['kkm']; ></td>
            <td>
-             <a href="index.php?page=mapel&action=hapus&kd=<? $result['kd_mapel']
-             ?>" tittle="">
+             <a href="index.php?page=mapel&action=hapus&kd=<? $result['kd_mapel']?>" tittle="">
                <span class="badge badge-danger">Hapus</span></a>
-             <a href="index.php?page=edit_mapel&kd=<?= $result['kd_mapel'] ?>" tittle 
-             =""><span class
+             <a href="index.php?page=edit_mapel&kd=<?= $result['kd_mapel'] ?>" tittle =""><span class
                ="badge badge-warning">Edit</span></a>
              </td>
            </tr>
