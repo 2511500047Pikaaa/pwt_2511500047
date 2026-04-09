@@ -11,13 +11,12 @@
 <?php
 if(isset($_GET['action'])) {
   if($_GET['action'] == "hapus") {
-    $kd =$_GET['kd'];
-    $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_mapel = '$kd' ");
-    if ($query){
-      echo '
-      <div class="alert alert-warning alert-dismissible">
-      Berhasil Di Hapus</div>';
-      echo '<meta http-equiv="refresh" content="1;url=index.php?page=mapel">';
+    $kd = $_GET['kd'];
+    $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_mapel='$kd'");
+
+    if ($query) {
+      echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
+      echo "<meta http-equiv="refresh" content="1;url=index.php?page=mapel">";
     }
   }
 }
