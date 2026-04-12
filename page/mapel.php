@@ -45,10 +45,10 @@ if(isset($_GET['action'])) {
         ?>
         <tbody>
           <tr>
-           <td><?= $no;?></td>
+           <td><?= $no; ?></td>
            <td><?=$result['kd_mapel']; ?></td>
            <td><?=$result['nm_mapel']; ?></td>
-           <td><?=$result['kkm']; ></td>
+           <td><?=$result['kkm']; ?></td>
            <td>
              <a href="index.php?page=mapel&action=hapus&kd=<? $result['kd_mapel']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
              <a href="index.php?page=edit_mapel&kd=<?= $result['kd_mapel'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
