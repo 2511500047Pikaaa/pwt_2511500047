@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Data Mapel</h1>
+        <h1 class="m-0 text-dark">Data Guru</h1>
       </div>  
     </div>
   </div>
@@ -12,7 +12,7 @@
 if(isset($_GET['action'])) {
   if($_GET['action'] == "hapus") {
     $kd = $_GET['kd'];
-    $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_mapel='$kd'");
+    $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_guru='$kd'");
 
     if ($query) {
       echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
@@ -26,34 +26,39 @@ if(isset($_GET['action'])) {
     <div class="card">
       <div class="card-body">
         <a href="index.php?page=tambah_mapel" class="btn btn-primary btn-sm">
-      Tambah Mapel</a>
+      Data Guru</a>
       <table class="table table-strapped">
         <tread>
           <tr>
             <th>NO</tr>
-            <th>Kd mapel</th>
-            <th>Nama mapel</th>
-            <th>KKM</th>
-            <th>Aksi</th>
+            <th>Kd Guru</th>
+            <th>Id User</th>
+            <th>Nama Guru</th>
+            <th>Jenis Kelamin</th>
+            <th>Pendidikan Terakhir</th>
+            <th>HP</th>
+            <th>Alamat>/th>
           </tr>
         <tread>
         <?php
         $no = 0;
-        $query = mysqli_query($koneksi, "SELECT * FROM mapel");
+        $query = mysqli_query($koneksi, "SELECT * FROM guru");
         while ($result = mysqli_fetch_array($query) ) {
           $no++
         ?>
         <tbody>
           <tr>
            <td><?= $no;?></td>
-           <td><?=$result['kd_mapel']; ?></td>
-           <td><?=$result['nm_mapel']; ?></td>
-           <td><?=$result['kkm']; ></td>
+           <td><?=$result['kd_guru']; ?></td>
+           <td><?=$result['id_user']; ?></td>
+           <td><?=$result['nm_guru']; ?></td>
+           <td><?=$result['jenkel']; ?></td>
+           <td><?=$result['pend_terakhir']; ?></td>
+           <td><?=$result['hp']; ?></td>
+           <td><?=$result['alamat']; ?></td>
            <td>
-             <a href="index.php?page=mapel&action=hapus&kd=<? $result['kd_mapel']?>" tittle="">
-               <span class="badge badge-danger">Hapus</span></a>
-             <a href="index.php?page=edit_mapel&kd=<?= $result['kd_mapel'] ?>" tittle =""><span class
-               ="badge badge-warning">Edit</span></a>
+             <a href="index.php?page=guru&action=hapus&kd=<? $result['kd_guru']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
+             <a href="index.php?page=edit_guru&kd=<?= $result['kd_guru'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
              </td>
            </tr>
            </tbody>
