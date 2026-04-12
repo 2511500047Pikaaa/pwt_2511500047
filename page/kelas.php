@@ -33,6 +33,7 @@ if(isset($_GET['action'])) {
             <th>NO</tr>
             <th>Kode Kelas</th>
             <th>Nama kelas</th>
+            <th>Aksi</th>
           </tr>
         <tread>
         <?php

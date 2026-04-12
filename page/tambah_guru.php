@@ -50,12 +50,12 @@
                     <div class="card-body p-2">
                         <form method="POST" action="">
                             <div class="form-group">
-                                <label for="kd-guru">Kode Guru</label>
+                               <label for="kd-guru">Kode Guru</label>
                                 <input type="text" name="kd_guru" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="id_guru">ID Guru</label>
-                                <input type="text" name="id_guru" id="id_guru" placeholder="ID Guru" class="form-control">
+                                <label for="id_user">ID User</label>
+                                <input type="text" name="id_user" id="id_user" placeholder="ID User" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="nm_guru">Nama Guru</label>

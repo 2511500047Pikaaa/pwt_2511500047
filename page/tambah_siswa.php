@@ -1,58 +1,63 @@
-<div class="content">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Edit Guru</h1>
-      </div>  
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Data Siswa</h1>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
     <?php
-    $kd = $_GET['kd'];
-    $edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM mapel WHERE kd_guru='$kd' "));
+    //kode otomatis
+    $carikode = mysqli_query($koneksi, "select max(nis) from siswa") or die (mysqli_error());
+    $datakode = mysqli_fetch_array($carikode);
+    if($datakode) {
+        $nilaikode = substr($datakode[0], 2);
+        $kode = (int) $nilaikode;
+        $kode = $kode + 1;
+        $hasilkode = "M-" .str_pad($kode, 3, "0", STR_PAD_LEFT);
+    } else {$hasilkode = "M="; }
+    $_SESSION["KODE"] = $hasilkode;
 
     if(isset($_POST['tambah'])){
-        $kd_guru = $_POST['kd_guru'];
+        $nis = $_POST['nis'];
         $id_user = $_POST['id_user'];
-        $nm_guru = $_POST['nm_guru'];
+        $nm_siswa = $_POST['nm_siswa'];
         $jenkel = $_POST['jenkel'];
-        $pend_terakhir = $_POST['pend_terakhir'];
         $hp = $_POST['hp'];
-        $alamat = $_POST['alamat'];
+        $id_kelas = $_POST['id_kelas'];
 
-    $insert = mysqli_query($koneksi, "UPDATE guru SET kd_guru='$kd_guru', id_user='$id_user', nm_guru='$nm_guru', jenkel='$jenkel', pend_terakhir='$pend_terakhir', hp='$hp', alamat='$alamat'  WHERE kd_mapel='$kd_mapel' ");
+        $insert = mysqli_query($koneksi, "INSERT INTO kelas values ('$nis','$id_user','$nm_siswa','$jenkel','$hp','$id_kelas')");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            <h5> <i class="icon fas fa-info"></i> Info </h5>
+            <h5><i class="icon fas fa-info"></i> Info </h5>
             <h4>Berhasil Disimpan</h4></div';
-            echo '<meta http-equiv="refresh" content="1;url=index.php?page=mapel">';
+            echo '<meta http-equiv="refresh" content="1;url=index.php?page=siswa">';
         }else{
             echo 'div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
             <h5> <i class="icon fas fa-info"></i> Info </h5>
             <h4>Gagal Disimpan</h4></div';
-        } 
+        }       
     }
     ?>
-
-     <section class="content">
+    <section class="content">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
                     <div class="card-body p-2">
                         <form method="POST" action="">
                             <div class="form-group">
-                                <label for="kd-guru">Kode Guru</label>
-                                <input type="text" name="kd_guru" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
+                                 <label for="nis">NIS</label>
+                                <input type="text" name="nis" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="id_user">ID User</label>
                                 <input type="text" name="id_user" id="id_user" placeholder="ID User" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="nm_guru">Nama Guru</label>
+                                <label for="nm_siswa">Nama Siswa</label>
                                 <input type="text" name="nm_guru" id="nm_guru" placeholder="Nama Guru" class="form-control">
                             </div>
                             <div class="form-group">
@@ -60,16 +65,12 @@
                                 <input type="text" name="jenkel" id="jenkel" placeholder="Jenis Kelamin" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="pend_terakhir">Pendidikan Terakhir</label>
-                                <input type="text" name="pend_terakhir" id="pend_terakhir" placeholder="Nama Guru" class="form-control">
-                            </div>
-                            <div class="form-group">
                                 <label for="hp">HP</label>
                                 <input type="text" name="hp" id="hp" placeholder="HP" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" id="alamat" placeholder="Alamat" class="form-control">
+                                <label for="id_kelas">ID Kelas</label>
+                                <input type="text" name="id_kelas" id="id_kelas" placeholder="ID Kelas" class="form-control">
                             </div>
                             <div class="card-footer">
                                 <input type="submit" class="btn btn-primary" name="tambah" value="simpan">
