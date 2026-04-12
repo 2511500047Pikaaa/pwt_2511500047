@@ -16,7 +16,7 @@ if(isset($_GET['action'])) {
 
     if ($query) {
       echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
-      echo "<meta http-equiv="refresh" content="1;url=index.php?page=mapel">";
+      echo "<meta http-equiv="refresh" content="1;url=index.php?page=guru">";
     }
   }
 }
@@ -25,8 +25,8 @@ if(isset($_GET['action'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <a href="index.php?page=tambah_mapel" class="btn btn-primary btn-sm">
-      Data Guru</a>
+        <a href="index.php?page=tambah_guru" class="btn btn-primary btn-sm">
+      Tambah Guru</a>
       <table class="table table-strapped">
         <tread>
           <tr>
