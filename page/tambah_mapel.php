@@ -30,7 +30,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
             <h5><i class="icon fas fa-info"></i> Info </h5>
             <h4>Berhasil Disimpan</h4></div';
-            echo '<meta http-equiv="refresh" content="1;url=index.php?page=mapel">';
+            echo '<meta http-equiv="refresh" content="1;url=starter.php?page=mapel">';
         }else{
             echo 'div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
