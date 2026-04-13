@@ -16,7 +16,7 @@ if(isset($_GET['action'])) {
 
     if ($query) {
       echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
-      echo "<meta http-equiv="refresh" content="1;url=index.php?page=siswa">";
+      echo "<meta http-equiv="refresh" content="1;url=starter.php?page=siswa">";
     }
   }
 }
@@ -25,7 +25,7 @@ if(isset($_GET['action'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <a href="index.php?page=tambah_siswa" class="btn btn-primary btn-sm">
+        <a href="starter.php?page=tambah_siswa" class="btn btn-primary btn-sm">
       Tambah Siswa</a>
       <table class="table table-strapped">
         <tread>
@@ -56,8 +56,8 @@ if(isset($_GET['action'])) {
            <td><?=$result['hp']; ?></td>
            <td><?=$result['id_kelas']; ?></td>
            <td>
-             <a href="index.php?page=siswa&action=hapus&kd=<? $result['nis']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
-             <a href="index.php?page=edit_siswa&kd=<?= $result['nis'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
+             <a href="starter.php?page=siswa&action=hapus&kd=<? $result['nis']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
+             <a href="starter.php?page=edit_siswa&kd=<?= $result['nis'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
              </td>
            </tr>
            </tbody>

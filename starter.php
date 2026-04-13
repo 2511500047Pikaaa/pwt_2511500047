@@ -127,10 +127,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Mata Pelajaran</p>
                 </a>
               </li>
+              <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="starter.php?page=kelas" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>Kelas</p>
                 </a>
               </li>
             </ul>

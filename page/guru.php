@@ -27,7 +27,7 @@ if(isset($_GET['action'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <a href="index.php?page=tambah_guru" class="btn btn-primary btn-sm">
+        <a href="starter.php?page=tambah_guru" class="btn btn-primary btn-sm">
       Tambah Guru</a>
       <table class="table table-strapped">
         <tread>
@@ -60,8 +60,8 @@ if(isset($_GET['action'])) {
            <td><?=$result['hp']; ?></td>
            <td><?=$result['alamat']; ?></td>
            <td>
-             <a href="index.php?page=guru&action=hapus&kd=<? $result['kd_guru']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
-             <a href="index.php?page=edit_guru&kd=<?= $result['kd_guru'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
+             <a href="starter.php?page=guru&action=hapus&kd=<? $result['kd_guru']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
+             <a href="starter.php?page=edit_guru&kd=<?= $result['kd_guru'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
              </td>
            </tr>
            </tbody>
