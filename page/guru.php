@@ -15,8 +15,10 @@ if(isset($_GET['action'])) {
     $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_guru='$kd'");
 
     if ($query) {
-      echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
-      echo "<meta http-equiv="refresh" content="1;url=index.php?page=guru">";
+      echo '
+      <div class="alert alert-warning alert-dismissible">
+      Berhasil Di Hapus</div>';
+      echo '<meta http-equiv="refresh" content="1;url=starter.php?page=mapel">';
     }
   }
 }

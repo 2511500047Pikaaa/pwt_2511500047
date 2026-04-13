@@ -15,8 +15,10 @@ if(isset($_GET['action'])) {
     $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_mapel='$kd'");
 
     if ($query) {
-      echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
-      echo "<meta http-equiv="refresh" content="1;url=index.php?page=mapel">";
+      echo '
+      <div class="alert alert-warning alert-dismissible">
+      Berhasil Di Hapus</div>';
+      echo '<meta http-equiv="refresh" content="1;url=starter.php?page=mapel">';
     }
   }
 }
@@ -25,7 +27,7 @@ if(isset($_GET['action'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <a href="index.php?page=tambah_mapel" class="btn btn-primary btn-sm">
+        <a href="starter.php?page=tambah_mapel" class="btn btn-primary btn-sm">
       Tambah Mapel</a>
       <table class="table table-strapped">
         <tread>
@@ -50,8 +52,8 @@ if(isset($_GET['action'])) {
            <td><?=$result['nm_mapel']; ?></td>
            <td><?=$result['kkm']; ?></td>
            <td>
-             <a href="index.php?page=mapel&action=hapus&kd=<? $result['kd_mapel']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
-             <a href="index.php?page=edit_mapel&kd=<?= $result['kd_mapel'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
+             <a href="starter.php?page=mapel&action=hapus&kd=<? $result['kd_mapel']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
+             <a href="starter.php?page=edit_mapel&kd=<?= $result['kd_mapel'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
              </td>
            </tr>
            </tbody>
