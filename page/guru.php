@@ -9,10 +9,11 @@
 </div>
 
 <?php
+include "config/koneksi.php";
 if(isset($_GET['action'])) {
   if($_GET['action'] == "hapus") {
     $kd = $_GET['kd'];
-    $query = mysqli_query($koneksi, "DELETE FROM mapel where kd_guru='$kd'");
+    $query = mysqli_query($conn, "DELETE FROM guru where Kd_guru='$kd'");
 
     if ($query) {
       echo '
@@ -45,23 +46,23 @@ if(isset($_GET['action'])) {
         <tread>
         <?php
         $no = 0;
-        $query = mysqli_query($koneksi, "SELECT * FROM guru");
+        $query = mysqli_query($conn, "SELECT * FROM guru");
         while ($result = mysqli_fetch_array($query) ) {
           $no++
         ?>
         <tbody>
           <tr>
            <td><?= $no;?></td>
-           <td><?=$result['kd_guru']; ?></td>
-           <td><?=$result['id_user']; ?></td>
-           <td><?=$result['nm_guru']; ?></td>
-           <td><?=$result['jenkel']; ?></td>
-           <td><?=$result['pend_terakhir']; ?></td>
-           <td><?=$result['hp']; ?></td>
-           <td><?=$result['alamat']; ?></td>
+           <td><?=$result['Kd_guru']; ?></td>
+           <td><?=$result['Id_user']; ?></td>
+           <td><?=$result['Nm_guru']; ?></td>
+           <td><?=$result['Jenkel']; ?></td>
+           <td><?=$result['Pend_terakhir']; ?></td>
+           <td><?=$result['Hp']; ?></td>
+           <td><?=$result['Alamat']; ?></td>
            <td>
-             <a href="starter.php?page=guru&action=hapus&kd=<? $result['kd_guru']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
-             <a href="starter.php?page=edit_guru&kd=<?= $result['kd_guru'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
+             <a href="starter.php?page=guru&action=hapus&kd=<? $result['Kd_guru']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
+             <a href="starter.php?page=edit_guru&kd=<?= $result['Kd_guru'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
              </td>
            </tr>
            </tbody>

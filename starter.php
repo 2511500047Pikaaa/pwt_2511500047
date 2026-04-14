@@ -85,7 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="char.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Pika LupppS Ridho</a>
+          <a href="#" class="d-block">Pika</a>
         </div>
       </div>
 
@@ -122,16 +122,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="starter.php?page=mapel" class="nav-link active">
+                <a href="starter.php?page=mapel" 
+                    class="nav-link <?= ($_GET['page'] == 'mapel') ? 'active' : ''; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Pelajaran</p>
                 </a>
               </li>
-              <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="starter.php?page=kelas" class="nav-link active">
+                <a href="starter.php?page=guru" 
+                   class="nav-link <?= ($_GET['page'] == 'guru') ? 'active' : ''; ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Guru</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="starter.php?page=kelas" 
+                   class="nav-link <?= ($_GET['page'] == 'kelas') ? 'active' : ''; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="starter.php?page=siswa" 
+                   class="nav-link <?= ($_GET['page'] == 'siswa') ? 'active' : ''; ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Siswa</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="starter.php?page=jadwal_kelas" 
+                   class="nav-link <?= ($_GET['page'] == 'jadwal') ? 'active' : ''; ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jadwal kelas</p>
                 </a>
               </li>
             </ul>
@@ -184,7 +210,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Dashboard</h5>

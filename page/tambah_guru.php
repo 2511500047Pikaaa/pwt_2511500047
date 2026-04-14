@@ -9,7 +9,7 @@
     </div>
     <?php
     //kode otomatis
-    $carikode = mysqli_query($koneksi, "select max(kd_guru) from guru") or die (mysqli_error());
+    $carikode = mysqli_query($conn, "select max(kd_guru) from guru") or die (mysqli_error());
     $datakode = mysqli_fetch_array($carikode);
     if($datakode) {
         $nilaikode = substr($datakode[0], 2);
@@ -28,7 +28,7 @@
         $hp = $_POST['hp'];
         $alamat = $_POST['alamat'];
 
-        $insert = mysqli_query($koneksi, "INSERT INTO mapel values ('$kd_guru','$id_guru','$nm_guru','$jenkel','$pend_terakhir','$hp','$alamat')");
+        $insert = mysqli_query($conn, "INSERT INTO mapel values ('$kd_guru','$id_guru','$nm_guru','$jenkel','$pend_terakhir','$hp','$alamat')");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>

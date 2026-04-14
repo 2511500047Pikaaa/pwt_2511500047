@@ -10,7 +10,7 @@
 
     <?php
     $kd = $_GET['kd'];
-    $edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM mapel WHERE kd_guru='$kd' "));
+    $edit = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM mapel WHERE kd_guru='$kd' "));
 
     if(isset($_POST['tambah'])){
         $kd_guru = $_POST['kd_guru'];
@@ -21,7 +21,7 @@
         $hp = $_POST['hp'];
         $alamat = $_POST['alamat'];
 
-    $insert = mysqli_query($koneksi, "UPDATE guru SET kd_guru='$kd_guru', id_user='$id_user', nm_guru='$nm_guru', jenkel='$jenkel', pend_terakhir='$pend_terakhir', hp='$hp', alamat='$alamat'  WHERE kd_mapel='$kd_mapel' ");
+    $insert = mysqli_query($conn, "UPDATE guru SET kd_guru='$kd_guru', id_user='$id_user', nm_guru='$nm_guru', jenkel='$jenkel', pend_terakhir='$pend_terakhir', hp='$hp', alamat='$alamat'  WHERE kd_mapel='$kd_mapel' ");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
