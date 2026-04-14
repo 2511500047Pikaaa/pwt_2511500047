@@ -10,7 +10,7 @@
 
     <?php
     $kd = $_GET['kd'];
-    $edit = mysqli_fetch_array(mysqli_query($koneksi, "SELECT * FROM siswa WHERE nis='$kd' "));
+    $edit = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM siswa WHERE nis='$kd' "));
 
     if(isset($_POST['tambah'])){
         $nis = $_POST['nis'];
@@ -20,7 +20,7 @@
         $hp = $_POST['hp'];
         $id_kelas = $_POST['id_kelas'];
 
-    $insert = mysqli_query($koneksi, "UPDATE siswa SET nis='$nis', id_user='$id_user', nm_siswa='$nm_siswa', jenkel='$jenkel', hp='$hp', id_kelas='$id_kelas'  WHERE nis='$nis' ");
+    $insert = mysqli_query($conn, "UPDATE siswa SET nis='$nis', id_user='$id_user', nm_siswa='$nm_siswa', jenkel='$jenkel', hp='$hp', id_kelas='$id_kelas'  WHERE nis='$nis' ");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>

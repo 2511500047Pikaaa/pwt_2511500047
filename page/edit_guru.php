@@ -10,7 +10,7 @@
 
     <?php
     $kd = $_GET['kd'];
-    $edit = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM mapel WHERE kd_guru='$kd' "));
+    $edit = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM guru WHERE Kd_guru='$kd' "));
 
     if(isset($_POST['tambah'])){
         $kd_guru = $_POST['kd_guru'];

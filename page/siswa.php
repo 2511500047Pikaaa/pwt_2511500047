@@ -9,14 +9,18 @@
 </div>
 
 <?php
+include "config/koneksi.php";
+
 if(isset($_GET['action'])) {
   if($_GET['action'] == "hapus") {
     $kd = $_GET['kd'];
-    $query = mysqli_query($koneksi, "DELETE FROM siswa where nis='$kd'");
+    $query = mysqli_query($conn, "DELETE FROM siswa where Nis='$kd'");
 
-    if ($query) {
-      echo "<div class="alert alert-warning alert-dismissible">Berhasil Di Hapus</div>";
-      echo "<meta http-equiv="refresh" content="1;url=starter.php?page=siswa">";
+   if ($query) {
+      echo '
+      <div class="alert alert-warning alert-dismissible">
+      Berhasil Di Hapus</div>';
+      echo '<meta http-equiv="refresh" content="1;url=starter.php?page=siswa">';
     }
   }
 }
@@ -42,22 +46,22 @@ if(isset($_GET['action'])) {
         <tread>
         <?php
         $no = 0;
-        $query = mysqli_query($koneksi, "SELECT * FROM kelas");
+        $query = mysqli_query($conn, "SELECT * FROM siswa");
         while ($result = mysqli_fetch_array($query) ) {
           $no++
         ?>
         <tbody>
           <tr>
            <td><?= $no;?></td>
-           <td><?=$result['nis']; ?></td>
-           <td><?=$result['id_user']; ?></td>
-           <td><?=$result['nm_siswa']; ?></td>
-           <td><?=$result['jenkel']; ?></td>
-           <td><?=$result['hp']; ?></td>
-           <td><?=$result['id_kelas']; ?></td>
+           <td><?=$result['Nis']; ?></td>
+           <td><?=$result['Id_user']; ?></td>
+           <td><?=$result['Nm_siswa']; ?></td>
+           <td><?=$result['Jenkel']; ?></td>
+           <td><?=$result['Hp']; ?></td>
+           <td><?=$result['Id_kelas']; ?></td>
            <td>
-             <a href="starter.php?page=siswa&action=hapus&kd=<? $result['nis']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
-             <a href="starter.php?page=edit_siswa&kd=<?= $result['nis'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
+             <a href="starter.php?page=siswa&action=hapus&kd=<? $result['Nis']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
+             <a href="starter.php?page=edit_siswa&kd=<?= $result['Nis'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
              </td>
            </tr>
            </tbody>

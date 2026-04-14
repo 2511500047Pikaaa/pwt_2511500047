@@ -8,32 +8,33 @@
         </div>
     </div>
     <?php
+    include "config/koneksi.php";
     //kode otomatis
-    $carikode = mysqli_query($koneksi, "select max(nis) from siswa") or die (mysqli_error());
+    $carikode = mysqli_query($conn, "select max(Nis) from siswa") or die (mysqli_error());
     $datakode = mysqli_fetch_array($carikode);
-    if($datakode) {
+    if($datakode[0] != NULL) {
         $nilaikode = substr($datakode[0], 2);
         $kode = (int) $nilaikode;
         $kode = $kode + 1;
-        $hasilkode = "M-" .str_pad($kode, 3, "0", STR_PAD_LEFT);
-    } else {$hasilkode = "M="; }
-    $_SESSION["KODE"] = $hasilkode;
+    } else {
+        $hasilkode = "M-";
+    }
 
     if(isset($_POST['tambah'])){
-        $nis = $_POST['nis'];
-        $id_user = $_POST['id_user'];
-        $nm_siswa = $_POST['nm_siswa'];
-        $jenkel = $_POST['jenkel'];
-        $hp = $_POST['hp'];
-        $id_kelas = $_POST['id_kelas'];
+        $Nis = $_POST['Nis'];
+        $Id_user = $_POST['Id_user'];
+        $Nm_siswa = $_POST['Nm_siswa'];
+        $Jenkel = $_POST['Jenkel'];
+        $Hp = $_POST['Hp'];
+        $Id_kelas = $_POST['Id_kelas'];
 
-        $insert = mysqli_query($koneksi, "INSERT INTO kelas values ('$nis','$id_user','$nm_siswa','$jenkel','$hp','$id_kelas')");
+        $insert = mysqli_query($conn, "INSERT INTO siswa values ('$Nis','$Id_user','$Nm_siswa','$Jenkel','$Hp','$Id_kelas')");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
             <h5><i class="icon fas fa-info"></i> Info </h5>
             <h4>Berhasil Disimpan</h4></div';
-            echo '<meta http-equiv="refresh" content="1;url=index.php?page=siswa">';
+            echo '<meta http-equiv="refresh" content="1;url=starter.php?page=siswa">';
         }else{
             echo 'div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
@@ -49,28 +50,28 @@
                     <div class="card-body p-2">
                         <form method="POST" action="">
                             <div class="form-group">
-                                 <label for="nis">NIS</label>
-                                <input type="text" name="nis" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
+                                 <label for="Nis">NIS</label>
+                                <input type="text" name="Nis" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="id_user">ID User</label>
-                                <input type="text" name="id_user" id="id_user" placeholder="ID User" class="form-control">
+                                <label for="Id_user">ID User</label>
+                                <input type="text" name="Id_user" id="Id_user" placeholder="ID User" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="nm_siswa">Nama Siswa</label>
-                                <input type="text" name="nm_guru" id="nm_guru" placeholder="Nama Guru" class="form-control">
+                                <label for="Nm_siswa">Nama Siswa</label>
+                                <input type="text" name="Nm_siswa" id="Nm_siswa" placeholder="Nama Siswa" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="jenkel">Jenis Kelamin</label>
-                                <input type="text" name="jenkel" id="jenkel" placeholder="Jenis Kelamin" class="form-control">
+                                <label for="Jenkel">Jenis Kelamin</label>
+                                <input type="text" name="Jenkel" id="Jenkel" placeholder="Jenis Kelamin" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="hp">HP</label>
-                                <input type="text" name="hp" id="hp" placeholder="HP" class="form-control">
+                                <label for="Hp">HP</label>
+                                <input type="text" name="Hp" id="Hp" placeholder="HP" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="id_kelas">ID Kelas</label>
-                                <input type="text" name="id_kelas" id="id_kelas" placeholder="ID Kelas" class="form-control">
+                                <label for="Id_kelas">ID Kelas</label>
+                                <input type="text" name="Id_kelas" id="Id_kelas" placeholder="ID Kelas" class="form-control">
                             </div>
                             <div class="card-footer">
                                 <input type="submit" class="btn btn-primary" name="tambah" value="simpan">

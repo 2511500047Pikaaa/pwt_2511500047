@@ -8,6 +8,7 @@
         </div>
     </div>
     <?php
+    include "config/koneksi.php";
     //kode otomatis
     $carikode = mysqli_query($conn, "select max(kd_guru) from guru") or die (mysqli_error());
     $datakode = mysqli_fetch_array($carikode);
@@ -15,31 +16,33 @@
         $nilaikode = substr($datakode[0], 2);
         $kode = (int) $nilaikode;
         $kode = $kode + 1;
-        $hasilkode = "M-" .str_pad($kode, 3, "0", STR_PAD_LEFT);
-    } else {$hasilkode = "M="; }
+        $hasilkode = "G-" .str_pad($kode, 3, "0", STR_PAD_LEFT);
+    } else {$hasilkode = "G="; }
     $_SESSION["KODE"] = $hasilkode;
 
     if(isset($_POST['tambah'])){
-        $kd_guru = $_POST['kd_guru'];
-        $id_user = $_POST['id_user'];
-        $nm_guru = $_POST['nm_guru'];
-        $jenkel = $_POST['jenkel'];
-        $pend_terakhir = $_POST['pend-terakhir'];
-        $hp = $_POST['hp'];
-        $alamat = $_POST['alamat'];
+        $Kd_guru = $_POST['Kd_guru'];
+        $Id_user = $_POST['Id_user'];
+        $Nm_guru = $_POST['Nm_guru'];
+        $Jenkel = $_POST['Jenkel'];
+        $Pend_terakhir = $_POST['Pend_terakhir'];
+        $Hp = $_POST['Hp'];
+        $Alamat = $_POST['Alamat'];
 
-        $insert = mysqli_query($conn, "INSERT INTO mapel values ('$kd_guru','$id_guru','$nm_guru','$jenkel','$pend_terakhir','$hp','$alamat')");
+        $insert = mysqli_query($conn, "INSERT INTO guru values ('$Kd_guru','$Id_user','$Nm_guru','$Jenkel','$Pend_terakhir','$Hp','$Alamat')");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">×</button>
             <h5><i class="icon fas fa-info"></i> Info </h5>
-            <h4>Berhasil Disimpan</h4></div';
+            <h4>Berhasil Disimpan</h4></div>';
             echo '<meta http-equiv="refresh" content="1;url=starter.php?page=guru">';
-        }else{
-            echo 'div class="alert alert-warning alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            <h5> <i class="icon fas fa-info"></i> Info </h5>
-            <h4>Gagal Disimpan</h4></div';
+        } else {
+            echo '<div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert"
+                aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-info"></i> Info </h5>
+            <h4>Gagal Disimpan</h4></div>';
         }       
     }
     ?>
@@ -50,32 +53,32 @@
                     <div class="card-body p-2">
                         <form method="POST" action="">
                             <div class="form-group">
-                               <label for="kd-guru">Kode Guru</label>
-                                <input type="text" name="kd_guru" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
+                               <label for="Kd-guru">Kode Guru</label>
+                                <input type="text" name="Kd_guru" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="id_user">ID User</label>
-                                <input type="text" name="id_user" id="id_user" placeholder="ID User" class="form-control">
+                                <label for="Id_user">ID User</label>
+                                <input type="text" name="Id_user" id="Id_user" placeholder="ID User" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="nm_guru">Nama Guru</label>
-                                <input type="text" name="nm_guru" id="nm_guru" placeholder="Nama Guru" class="form-control">
+                                <label for="Nm_guru">Nama Guru</label>
+                                <input type="text" name="Nm_guru" id="Nm_guru" placeholder="Nama Guru" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="jenkel">Jenis Kelamin</label>
-                                <input type="text" name="jenkel" id="jenkel" placeholder="Jenis Kelamin" class="form-control">
+                                <label for="Jenkel">Jenis Kelamin</label>
+                                <input type="text" name="Jenkel" id="Jenkel" placeholder="Jenis Kelamin" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="pend_terakhir">Pendidikan Terakhir</label>
-                                <input type="text" name="pend_terakhir" id="pend_terakhir" placeholder="Pendidikan Terakhir" class="form-control">
+                                <label for="Pend_terakhir">Pendidikan Terakhir</label>
+                                <input type="text" name="Pend_terakhir" id="Pend_terakhir" placeholder="Pendidikan Terakhir" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="hp">HP</label>
-                                <input type="text" name="hp" id="hp" placeholder="HP" class="form-control">
+                                <label for="Hp">HP</label>
+                                <input type="text" name="Hp" id="Hp" placeholder="HP" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" name="alamat" id="alamat" placeholder="Alamat" class="form-control">
+                                <label for="Alamat">Alamat</label>
+                                <input type="text" name="Alamat" id="Alamat" placeholder="Alamat" class="form-control">
                             </div>
                             <div class="card-footer">
                                 <input type="submit" class="btn btn-primary" name="tambah" value="simpan">
