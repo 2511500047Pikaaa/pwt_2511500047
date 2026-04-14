@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pend_terakhir">Pendidikan Terakhir</label>
-                                <input type="text" name="pend_terakhir" id="pend_terakhir" placeholder="Nama Guru" class="form-control">
+                                <input type="text" name="pend_terakhir" id="pend_terakhir" placeholder="Pendidikan Terakhir" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="hp">HP</label>
