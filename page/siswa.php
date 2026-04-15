@@ -36,7 +36,6 @@ if(isset($_GET['action'])) {
           <tr>
             <th>NO</tr>
             <th>NIS</th>
-            <th>Id User</th>
             <th>Nama Siswa</th>
             <th>Jenis Kelamin</th>
             <th>HP</th>
@@ -54,7 +53,6 @@ if(isset($_GET['action'])) {
           <tr>
            <td><?= $no;?></td>
            <td><?=$result['Nis']; ?></td>
-           <td><?=$result['Id_user']; ?></td>
            <td><?=$result['Nm_siswa']; ?></td>
            <td><?=$result['Jenkel']; ?></td>
            <td><?=$result['Hp']; ?></td>

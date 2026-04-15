@@ -14,13 +14,12 @@
 
     if(isset($_POST['tambah'])){
         $nis = $_POST['nis'];
-        $id_user = $_POST['id_user'];
         $nm_siswa = $_POST['nm_siswa'];
         $jenkel = $_POST['jenkel'];
         $hp = $_POST['hp'];
         $id_kelas = $_POST['id_kelas'];
 
-    $insert = mysqli_query($conn, "UPDATE siswa SET nis='$nis', id_user='$id_user', nm_siswa='$nm_siswa', jenkel='$jenkel', hp='$hp', id_kelas='$id_kelas'  WHERE nis='$nis' ");
+    $insert = mysqli_query($conn, "UPDATE siswa SET nis='$nis', nm_siswa='$nm_siswa', jenkel='$jenkel', hp='$hp', id_kelas='$id_kelas'  WHERE nis='$nis' ");
         if ($insert) {
             echo '<div class="alert alert-info-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>

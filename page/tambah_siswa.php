@@ -54,10 +54,6 @@
                                 <input type="text" name="Nis" value="<?= $hasilkode; ?>" placeholder="Id Kat" class="form-control" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="Id_user">ID User</label>
-                                <input type="text" name="Id_user" id="Id_user" placeholder="ID User" class="form-control">
-                            </div>
-                            <div class="form-group">
                                 <label for="Nm_siswa">Nama Siswa</label>
                                 <input type="text" name="Nm_siswa" id="Nm_siswa" placeholder="Nama Siswa" class="form-control">
                             </div>
