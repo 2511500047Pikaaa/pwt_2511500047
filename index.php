@@ -1,11 +1,8 @@
 <?php
-session_start();
-
-if(!isset($_SESSION['username'])){
-    header("location:login.php");
-}
+  session_start();
+  require_once("config/koneksi.php");
+  if(isset($_SESSION['Username'])){
 ?>
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -35,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="starter.php" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -82,10 +79,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="char.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Pika</a>
+          <a href="#" class="d-block">pikaa</a>
         </div>
       </div>
 
@@ -104,79 +101,71 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="starter.php" class="nav-link">
-              <i class="fas fa-home"></i>
-              <p>
-                Home
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Starter Pages
+                Master
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="starter.php?page=mapel" 
-                    class="nav-link <?= ($_GET['page'] == 'mapel') ? 'active' : ''; ?>">
+                <a href="index.php?page=mapel" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mata Pelajaran</p>
                 </a>
               </li>
-              
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="starter.php?page=guru" 
-                   class="nav-link <?= ($_GET['page'] == 'guru') ? 'active' : ''; ?>">
+                <a href="index.php?page=guru" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Guru</p>
+                  <p>Guru</p>
                 </a>
               </li>
-              
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="starter.php?page=kelas" 
-                   class="nav-link <?= ($_GET['page'] == 'kelas') ? 'active' : ''; ?>">
+                <a href="index.php?page=kelas" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas</p>
                 </a>
               </li>
-              
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="starter.php?page=siswa" 
-                   class="nav-link <?= ($_GET['page'] == 'siswa') ? 'active' : ''; ?>">
+                <a href="index.php?page=siswa" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Siswa</p>
                 </a>
               </li>
-              
+            </ul>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Transaksi
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="starter.php?page=jadwal_kelas" 
-                   class="nav-link <?= ($_GET['page'] == 'jadwal') ? 'active' : ''; ?>">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Jadwal kelas</p>
+                  <p>Jadwal</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="logout.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Logout
               </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="logout.php" class="nav-link text-danger" onclick="return confirm('Yakin mau logout?')">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-                <p>
-                  Logout
-                </p>
             </a>
           </li>
         </ul>
@@ -217,26 +206,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <p class="card-text">
                   <?php
-                  if (isset($_GET['page'])) {
-                    $page = $_GET['page'];
-                  } else {
-                    $page = "";
-                  }
-                  if ($page == "") {
-                    include "page/dashboard.php";
-                  } elseif (!file_exists("page/$page.php")) {
-                    echo "File tidak ditemukan";
-                  } else {
-                    include "page/$page.php";
-                  }
+                    if (isset($_GET['page'])) {
+                        $page = $_GET['page'];
+                    } else {
+                        $page = "";
+                    }
+                    if ($page == "") {
+                       include "page/dashboard.php";
+                    } elseif (!file_exists("page/$page.php")) {
+                       echo "File Tidak Ditemukan"; 
+                    } else {
+                        include "page/$page.php";
+                    }
                   ?>
                 </p>
 
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
               </div>
             </div>
-
           </div>
           <!-- /.col-md-6 -->
+          
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -277,3 +268,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="dist/js/adminlte.min.js"></script>
 </body>
 </html>
+<?php
+  }else{
+    echo"<meta http-equiv='refresh'content='0 url =login.php'>";
+  }
+?>

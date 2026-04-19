@@ -26,7 +26,7 @@ if (isset($_GET['action'])) {
   <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <a href="index.php?page=tambah_siswa" class="btn btn-primary btn-sm">Tambah siswa</a>
+        <a href="index.php?page=tambah_siswa" class="btn btn-primary btn-sm">tambah siswa</a>
       <table class="table table-striped">
         <tread>
           <tr>
