@@ -2,73 +2,72 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Data Guru</h1>
-      </div>  
+        <h1 class="m-0 text-dark">Data guru</h1>
+      </div>
     </div>
   </div>
 </div>
 
 <?php
-include "config/koneksi.php";
-if(isset($_GET['action'])) {
-  if($_GET['action'] == "hapus") {
-    $kd = $_GET['kd'];
-    $query = mysqli_query($conn, "DELETE FROM guru where Kd_guru='$kd'");
-
-    if ($query) {
-      echo '
-      <div class="alert alert-warning alert-dismissible">
-      Berhasil Di Hapus</div>';
-      echo '<meta http-equiv="refresh" content="1;url=starter.php?page=mapel">';
+if (isset($_GET['action'])) {
+    if($_GET['action'] == "hapus") {
+        $kd =$_GET['kd'];
+        $query = mysqli_query($koneksi, "DELETE FROM guru where kd_guru = '$kd' ");
+        if ($query){
+            echo '
+            <div class="alert alert-warning alert-dismissible">
+            Berhasil Di Hapus</div>';
+            echo '<meta http-equiv="refresh" content="1;url=index.php?page=guru">';
+        }
     }
-  }
 }
 ?>
 <div class="content">
   <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <a href="starter.php?page=tambah_guru" class="btn btn-primary btn-sm">
-      Tambah Guru</a>
-      <table class="table table-strapped">
+        <a href="index.php?page=tambah_guru" class="btn btn-primary btn-sm">Tambah guru</a>
+      <table class="table table-striped">
         <tread>
           <tr>
-            <th>NO</tr>
-            <th>Kd Guru</th>
-            <th>Id User</th>
-            <th>Nama Guru</th>
-            <th>Jenis Kelamin</th>
-            <th>Pendidikan Terakhir</th>
+            <th>NO</th>
+            <th>Kd guru</th>
+            <th>ID User</th>
+            <th>Nama guru</th>
+            <th>Jenkel</th>
+            <th>Pend Terakhir</th>
             <th>HP</th>
             <th>Alamat</th>
             <th>Aksi</th>
           </tr>
-        <tread>
+        </tread>
         <?php
         $no = 0;
-        $query = mysqli_query($conn, "SELECT * FROM guru");
+        $query = mysqli_query($koneksi, "SELECT * FROM guru");
         while ($result = mysqli_fetch_array($query) ) {
-          $no++
+            $no++
         ?>
         <tbody>
-          <tr>
-           <td><?= $no;?></td>
-           <td><?=$result['Kd_guru']; ?></td>
-           <td><?=$result['Id_user']; ?></td>
-           <td><?=$result['Nm_guru']; ?></td>
-           <td><?=$result['Jenkel']; ?></td>
-           <td><?=$result['Pend_terakhir']; ?></td>
-           <td><?=$result['Hp']; ?></td>
-           <td><?=$result['Alamat']; ?></td>
-           <td>
-             <a href="starter.php?page=guru&action=hapus&kd=<? $result['Kd_guru']?>" tittle=""><span class="badge badge-danger">Hapus</span></a>
-             <a href="starter.php?page=edit_guru&kd=<?= $result['Kd_guru'] ?>" tittle =""><span class="badge badge-warning">Edit</span></a>
-             </td>
-           </tr>
-           </tbody>
+            <tr>
+            <td><?= $no;?></td>
+            <td><?=$result['kd_guru']; ?></td>
+            <td><?=$result['id_user']; ?></td>
+            <td><?=$result['nm_guru']; ?></td>
+            <td><?=$result['jenkel']; ?></td>
+            <td><?=$result['pend_terakhir']; ?></td>
+            <td><?=$result['hp']; ?></td>
+            <td><?=$result['alamat']; ?></td>
+            <td>
+                <a href="index.php?page=guru&action=hapus&kd=<?= $result['kd_guru'] 
+                ?>" title="">
+                  <span class="badge badge-danger">Hapus</span>
+                <a href="index.php?page=edit_guru&kd=<?= $result['kd_guru'] ?>" title=""><span class="badge badge-warning">Edit</span></a>        
+            </td>
+            </tr>
+        </tbody>
         <?php } ?>
-     </table>
-   </div>
- </div>
+      </table>
+      </div>
+    </div>
+  </div>
 </div>
-</div> 
